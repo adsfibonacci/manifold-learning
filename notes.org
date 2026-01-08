@@ -1,0 +1,15 @@
+#+setupfile: ~/.emacs.d/latex.org
+#+title: Math 658 Notes
+#+startup: indent
+
+* Lecture 1 - August 25
+** Books
+  - Nonholonomic Dynamics and Control :: Anthony Bloch
+  - Differential Equations, Dynamical Systems, and an Introduction to Chaos :: Hirsh, Smale, Devaney
+  - Mathematical Methods of Classical Mechanics :: Vladimir Arnol'd
+  - Introduction to Mechanics and Symmetry :: Ratiu and Marsden
+  - Foundations of Mechanics :: Abraham, Marsden, and Ratiu
+  - Classical Mechanics :: Goldstein
+  - Classical Mechanics :: Whitaker
+  - Nonlinear Oscillations, Dynamical Systems, and Bifurcations of Vector Fields :: Guckenheimer and Holmes
+    
