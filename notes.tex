@@ -1,4 +1,4 @@
-% Created 2026-01-08 Thu 08:42
+% Created 2026-01-08 Thu 09:47
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4, 12pt]{article}
 \usepackage[utf8]{inputenc}
@@ -62,6 +62,8 @@
 \newcommand{\cM}{\mathcal{M}}
 \newcommand{\dd}{\, \mathrm{d}}
 \newcommand{\nrm}[1]{\Vert #1 \Vert}
+\NewDocumentCommand{\ode}{O{} O{t}}{\frac{d#1}{d#2}}
+\NewDocumentCommand{\pde}{O{} O{t}}{\frac{\partial#1}{\partial#2}}
 \author{Alexander Speigle}
 \date{\today}
 \title{Math 658 Notes}
@@ -78,9 +80,9 @@
 \tableofcontents
 
 \section{Lecture 1 - August 25}
-\label{sec:org98bb6cb}
+\label{sec:org64fec2c}
 \subsection{Books}
-\label{sec:orge87192b}
+\label{sec:org5b2e2cf}
 \begin{description}
 \item[{Nonholonomic Dynamics and Control}] Anthony Bloch
 \item[{Differential Equations, Dynamical Systems, and an Introduction to Chaos}] Hirsh, Smale, Devaney
@@ -91,4 +93,59 @@
 \item[{Classical Mechanics}] Whitaker
 \item[{Nonlinear Oscillations, Dynamical Systems, and Bifurcations of Vector Fields}] Guckenheimer and Holmes
 \end{description}
+\subsection{Review of Differential Equations}
+\label{sec:orge7b9ad0}
+\[\dot{\mathbf x} = f(\mathbf x) \text{ for } \mathbf x \in \bR^n\]
+\(f\) needs to be at least \(C^1\) (Lipschitz Continuous)
+Define a control by
+\[ \dot{\mathbf x} = f(\mathbf x, u(t)) \]
+This generalizes to a manifold \(M^n\) (a manifold of dimension \(n\)), where \(\mathbf x \in M^n\) and \(t \in \bR\).
+
+Examples include 
+\begin{align*}
+S^2 \subseteq \bR^3 \\
+T^2 \equiv S^1 \times S^1 \subseteq \bR^3 \\
+T^n \equiv S^1 \times \dots \times S^1 \subseteq \bR^{n+1}
+\end{align*}
+\subsection{Rigid Body}
+\label{sec:orgf5ec6d6}
+The rigid body is equivalent to the rotational group \(SO(3)\).
+
+Here, \(M = G\) indicates that the manifold is a group, defined as a Lie-Group. The tangent bundle to \(M\) is labeled as \(TM\) and the cotangent bundle is labeled as \(T^\ast M\).
+\subsection{Symmetries}
+\label{sec:org275b99c}
+Lagrangian and Hamiltonian interpretations allows the system to rely only on state and momentum variables which increases interpretability in terms of symmetries.
+
+The Lagrangian is \[ L = T- U \] where \(T\) is interpreted as the kinetic energy of the system and \(U\) is interpreted as the potential of the system.
+
+Using the same variable names, the Hamiltonian is defined by \[ H = T + U \]
+
+These are not necessarily the mechanics definitions, as there are Hamiltonian and Lagrangian systems that are not mechanical systems and definitions of the \(T\) and \(U\) differ from the physics definitions of \(\frac12 mv^2\), \(mgh\), etc.
+\subsection{Differential Equations on \(\bR^n\)}
+\label{sec:orgd50ccdb}
+A linear differential equation with \(\mathbf \in \bR^n\) is one such that the \(f(\mathbf x)\) is a constant matrix. 
+\begin{align*}
+\dot{\mathbf x} & = f(\mathbf x) \qquad \mathbf x(0) = \mathbf x_0 \\
+\dot{\mathbf x} & = \mathbf{ Ax} \qquad \mathbf A \in \bR^{n \times n} \text{(constant)} \\
+\mathbf x(t) & = \exp(\mathbf A t) \mathbf x_0
+\end{align*}
+where \(\mathbf x(t)\) represents the position in \(\bR^n\) at time \(t \in \bR\). 
+
+A control system involving \(\mathbf x \in \bR^n\) and \(m\) control parameters is 
+\begin{align*}
+\dot{\mathbf x} & = \mathbf{Ax} + \mathbf{Bu}(t) \qquad \mathbf A \in \bR^{n \times n}, \mathbf B \in \bR^{n \times m} \\
+\mathbf x(0) & = \mathbf x_0 \\
+\mathbf x(t) & = \mathbf x_t
+\end{align*}
+\subsubsection{Lagrangian}
+\label{sec:org9b6637c}
+A Lagrangian \(L = L(\mathbf x, \dot{\mathbf x}, t)\) is often independent of \(t\).
+A goal is to find critical points of the functional
+\[ \int_0^T L(\mathbf x, \dot{ \mathbf x}, t) dt \]
+This relates to the field called calculus of variations.
+Finding the critical curve is a \(L\) such that
+\[ \ode (\pde[L][\dot{\mathbf x}]) = \pde[L][\mathbf x] \]
+This results in a set of \(n\) equations known as Lagrangian equations.
+
+For a standard kinetic energy mechanical system \(L = T = \frac12 m \dot x^2\), we have
 \end{document}
